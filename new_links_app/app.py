@@ -1,16 +1,14 @@
-from flask import Flask, render_template, redirect, url_for, request, flash
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
+import os
+from flask import Flask
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your-secret-key'
+
+# استخدم مكتبة os للوصول للمتغيرات البيئية
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
-db = SQLAlchemy(app)
 
-login_manager = LoginManager(app)
-login_manager.login_view = 'login'
+@app.route('/')
+def home():
+    return "Hello, Railway!"
 
-from routes import *
-
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)  # هذا السطر مش مهم مع Gunicorn
