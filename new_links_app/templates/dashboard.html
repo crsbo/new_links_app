@@ -1,0 +1,10 @@
+
+{% extends "layout.html" %}
+{% block content %}
+    <h2>Your Dashboard</h2>
+    <!-- Links List -->
+    <form action="{{ url_for('create_link') }}" method="POST">
+        <input type="url" name="url" placeholder="Link URL">
+        <button type="submit">Create Link</button>
+    </form>
+{% endblock %}
